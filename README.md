@@ -2,21 +2,21 @@
 
 This toolkit is designed to teach you the concepts of solidity using Scaffold-ETH 2. Curriculum is based on the amazing content from Smart Contract Programer.
 
-## 🚩 Challenge #0: Hello World
+# 🚩 Challenge #0: Hello World
+
+Watch this explanation video first to understand the basic concepts.
 
 [![Learn Solidity - Hello World](https://img.youtube.com/vi/hMwdd664_iw/0.jpg)](https://www.youtube.com/watch?v=hMwdd664_iw)
 
-Link to this on solidity-by-example.
+[Link](https://solidity-by-example.org/hello-world/) to this on solidity-by-example.
 
-## Requirements
+## Checkpoint 0: 📦 Environment 📚
 
 Before you begin, you need to install the following tools:
 
 - [Node (v18 LTS)](https://nodejs.org/en/download/)
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
-
-## Quickstart
 
 To get started with Scaffold-ETH 2, follow the steps below:
 
@@ -25,6 +25,7 @@ To get started with Scaffold-ETH 2, follow the steps below:
 ```
 git clone https://github.com/kmjones1979/scaffold-eth-2-solidity.git
 cd scaffold-eth-2-solidity
+git checkout solidity-0-hello-world
 yarn install
 ```
 

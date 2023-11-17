@@ -78,7 +78,7 @@ yarn test
 
 > The test script for hardhat is located in `packages/hardhat/test`
 
-## License identifiers
+## Checkpoint 1: Adding a license identifier
 
 When deploying your contract earlier you may have noticed the following warning:
 
@@ -86,7 +86,7 @@ When deploying your contract earlier you may have noticed the following warning:
 
 Trust in smart contracts can be better established if their source code is available. Since making source code available always touches on legal problems with regards to copyright, the Solidity compiler encourages the use of machine-readable SPDX license identifiers. Every source file should start with a comment indicating its license.
 
-Add a license to the very top of your smart contract. 
+1. Add a license to the very top of your smart contract. 
 
 > A list of SPDX License Identifiers can be found [here](https://spdx.org/licenses/).
 
@@ -94,13 +94,13 @@ Add a license to the very top of your smart contract.
 //SPDX-License-Identifier: MIT
 ```
 
-Then redeploy your contract using your terminal.
+2. Then redeploy your contract using your terminal.
 
 ```
 yarn deploy
 ```
 
-## Pragmas
+## Checkpoint 2: Understanding Pragmas
 
 Source files can (and should) be annotated with a version pragma to reject compilation with future compiler versions that might introduce incompatible changes. We try to keep these to an absolute minimum and introduce them in a way that changes in semantics also require changes in the syntax, but this is not always possible. 
 
@@ -108,16 +108,19 @@ Source files can (and should) be annotated with a version pragma to reject compi
 pragma solidity >=0.8.0 <0.9.0;
 ```
 
-## Fixing our test
+## Checkpoint 3: Fixing our test
+
+Check the hardhat test located in `packages/hardhat/test`. You will notice that the test is checking that the response from yourContract.greet() is equal to a string value of "Hello Builders!"
 
 ```
-contract YourContract {
-
-	string public greet = "Hello Builders!";
-
-}
+    it("Should have the right message on deploy", async function () {
+      expect(await yourContract.greet()).to.equal("Hello Builders!");
+    });
 ```
 
+1. Fix the variable in your smart contract to match the required value.
+
+2. Then redeploy your contract using your terminal.
 
 ## Additional Resources / Source Credit
 

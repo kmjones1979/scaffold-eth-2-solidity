@@ -4,7 +4,12 @@ This toolkit is designed to teach you the concepts of solidity using Scaffold-ET
 
 # 🚩 Challenge #0: Hello World
 
-In this challenge you will learn about, the license identifier, pragmas and how to deploy your contract.
+In this challenge you will learn about the following concepts:
+- License identifiers
+- Pragmas
+- Editing your smart contract
+- Testing your smart contract
+- Deploying your smart contract
 
 
 ## Checkpoint 0: 📦 Environment 📚
@@ -68,6 +73,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ```
 yarn test
 ```
+
+> NOTE: THIS TEST WILL FAIL. In the next section you will fix your smart contract so that it passes.
 
 > The test script for hardhat is located in `packages/hardhat/test`
 

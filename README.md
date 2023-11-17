@@ -4,11 +4,8 @@ This toolkit is designed to teach you the concepts of solidity using Scaffold-ET
 
 # 🚩 Challenge #0: Hello World
 
-Watch this explanation video first to understand the basic concepts.
+In this challenge you will learn about, the license identifier, pragmas and how to deploy your contract.
 
-[![Learn Solidity - Hello World](https://img.youtube.com/vi/hMwdd664_iw/0.jpg)](https://www.youtube.com/watch?v=hMwdd664_iw)
-
-[Link](https://solidity-by-example.org/hello-world/) to this on solidity-by-example.
 
 ## Checkpoint 0: 📦 Environment 📚
 
@@ -62,17 +59,29 @@ This command deploys a test smart contract to the local network. The contract is
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the contract component or the example ui in the frontend. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the contract component.
 
-Run smart contract test with `yarn hardhat:test`
+> The app config for Scaffold-ETH 2 is located in `packages/nextjs/scaffold.config.ts`
+
+5. Test your smart contract
+
+Run a smart contract test with `yarn test`
 
 > The test script for hardhat is located in `packages/hardhat/test`
+
+
+## Additional Resources / Source Credit
+
+- [Solidity-by-example - Hello World](https://solidity-by-example.org/hello-world/)
+- [Layout of a Solidity Source File](https://docs.soliditylang.org/en/develop/layout-of-source-files.html)
+
 
 ## Documentation
 
 Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
 
 To know more about its features, check out our [website](https://scaffoldeth.io).
+
 
 ## Contributing to Scaffold-ETH 2
 

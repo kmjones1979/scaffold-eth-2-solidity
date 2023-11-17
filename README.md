@@ -20,15 +20,11 @@ To get started with Scaffold-ETH 2, follow the steps below:
 1. Clone this repo, checkout the active branch & install dependencies
 
 ```
-git clone https://github.com/kmjones1979/scaffold-eth-2-solidity.git
+git clone -b solidity-0-hello-world https://github.com/kmjones1979/scaffold-eth-2-solidity.git solidity-0-hello-world
 ```
 
 ```
-cd scaffold-eth-2-solidity
-```
-
-```
-git checkout solidity-0-hello-world
+cd solidity-0-hello-world
 ```
 
 ```

@@ -20,12 +20,21 @@ Before you begin, you need to install the following tools:
 
 To get started with Scaffold-ETH 2, follow the steps below:
 
-1. Clone this repo & install dependencies
+1. Clone this repo, checkout the active branch & install dependencies
 
 ```
 git clone https://github.com/kmjones1979/scaffold-eth-2-solidity.git
+```
+
+```
 cd scaffold-eth-2-solidity
+```
+
+```
 git checkout solidity-0-hello-world
+```
+
+```
 yarn install
 ```
 
@@ -43,7 +52,9 @@ This command starts a local Ethereum network using Hardhat. The network runs on 
 yarn deploy
 ```
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
+This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts`
+
+> The deploy script for hardhat is located in `packages/hardhat/deploy`
 
 4. On a third terminal, start your NextJS app:
 
@@ -55,9 +66,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 Run smart contract test with `yarn hardhat:test`
 
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend in `packages/nextjs/pages`
-- Edit your deployment scripts in `packages/hardhat/deploy`
+> The test script for hardhat is located in `packages/hardhat/test`
 
 ## Documentation
 

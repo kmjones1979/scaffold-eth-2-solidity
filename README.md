@@ -39,7 +39,9 @@ yarn install
 yarn chain
 ```
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
+This command starts a local Ethereum network using Hardhat that can be used for testing and development. 
+
+> The hardhat configuration file is located at `packages/hardhat/hardhat.config.ts`.
 
 3. On a second terminal, deploy the test contract:
 
@@ -47,7 +49,7 @@ This command starts a local Ethereum network using Hardhat. The network runs on 
 yarn deploy
 ```
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts`
+> The smart contract is located in `packages/hardhat/contracts`
 
 > The deploy script for hardhat is located in `packages/hardhat/deploy`
 
@@ -57,13 +59,15 @@ This command deploys a test smart contract to the local network. The contract is
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the contract component.
+Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the debug contract tab.
 
 > The app config for Scaffold-ETH 2 is located in `packages/nextjs/scaffold.config.ts`
 
 5. Test your smart contract
 
-Run a smart contract test with `yarn test`
+```
+yarn test
+```
 
 > The test script for hardhat is located in `packages/hardhat/test`
 

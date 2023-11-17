@@ -1,6 +1,12 @@
 # 🏗 Scaffold-ETH 2 Solidity Challenges
 
+This toolkit is designed to teach you the concepts of solidity using Scaffold-ETH 2. Curriculum is based on the amazing content from Smart Contract Programer.
 
+## 🚩 Challenge #0: Hello World
+
+[![Learn Solidity - Hello World](https://img.youtube.com/vi/hMwdd664_iw/0.jpg)](https://www.youtube.com/watch?v=hMwdd664_iw)
+
+Link to this on solidity-by-example.
 
 ## Requirements
 

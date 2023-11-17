@@ -104,8 +104,34 @@ yarn deploy
 
 Source files can (and should) be annotated with a version pragma to reject compilation with future compiler versions that might introduce incompatible changes. We try to keep these to an absolute minimum and introduce them in a way that changes in semantics also require changes in the syntax, but this is not always possible. 
 
+1. Check which version of solidity is configured in the Hardhat configuration. 
+
+> The hardhat configuration file is located at `packages/hardhat/hardhat.config.ts`.
+
+In the below example we have version 0.8.17 available to use in our contracts.
+
 ```
-pragma solidity >=0.8.0 <0.9.0;
+  solidity: {
+    version: "0.8.17",
+    settings: {
+      optimizer: {
+        enabled: true,
+        // https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options
+        runs: 200,
+      },
+    },
+```
+
+2. Update your pragma to use up to that specific version.
+
+```
+pragma solidity ^0.8.17;
+```
+
+3. Then redeploy your contract using your terminal.
+
+```
+yarn deploy
 ```
 
 ## Checkpoint 3: Fixing our test
@@ -121,6 +147,38 @@ Check the hardhat test located in `packages/hardhat/test`. You will notice that 
 1. Fix the variable in your smart contract to match the required value.
 
 2. Then redeploy your contract using your terminal.
+
+```
+yarn deploy
+```
+
+3. Test you smart contract
+
+```
+yarn test
+```
+
+You should see the following passing output after updating your change and testing.
+
+```
+  YourContract
+    Deployment
+      ✓ Should have the right message on deploy
+
+·------------------------|---------------------------|-------------|-----------------------------·
+|  Solc version: 0.8.17  ·  Optimizer enabled: true  ·  Runs: 200  ·  Block limit: 30000000 gas  │
+·························|···························|·············|······························
+|  Methods                                                                                       │
+··············|··········|·············|·············|·············|···············|··············
+|  Contract   ·  Method  ·  Min        ·  Max        ·  Avg        ·  # calls      ·  usd (avg)  │
+··············|··········|·············|·············|·············|···············|··············
+|  Deployments           ·                                         ·  % of limit   ·             │
+·························|·············|·············|·············|···············|··············
+|  YourContract          ·          -  ·          -  ·     170499  ·        0.6 %  ·          -  │
+·------------------------|-------------|-------------|-------------|---------------|-------------·
+
+  1 passing (585ms)
+```
 
 ## Additional Resources / Source Credit
 

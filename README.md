@@ -78,6 +78,46 @@ yarn test
 
 > The test script for hardhat is located in `packages/hardhat/test`
 
+## License identifiers
+
+When deploying your contract earlier you may have noticed the following warning:
+
+> Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing `"SPDX-License-Identifier: <SPDX-License>"` to each source file. Use `"SPDX-License-Identifier: UNLICENSED"` for non-open-source code. Please see https://spdx.org for more information.
+
+Trust in smart contracts can be better established if their source code is available. Since making source code available always touches on legal problems with regards to copyright, the Solidity compiler encourages the use of machine-readable SPDX license identifiers. Every source file should start with a comment indicating its license.
+
+Add a license to the very top of your smart contract. 
+
+> A list of SPDX License Identifiers can be found [here](https://spdx.org/licenses/).
+
+```
+//SPDX-License-Identifier: MIT
+```
+
+Then redeploy your contract using your terminal.
+
+```
+yarn deploy
+```
+
+## Pragmas
+
+Source files can (and should) be annotated with a version pragma to reject compilation with future compiler versions that might introduce incompatible changes. We try to keep these to an absolute minimum and introduce them in a way that changes in semantics also require changes in the syntax, but this is not always possible. 
+
+```
+pragma solidity >=0.8.0 <0.9.0;
+```
+
+## Fixing our test
+
+```
+contract YourContract {
+
+	string public greet = "Hello Builders!";
+
+}
+```
+
 
 ## Additional Resources / Source Credit
 

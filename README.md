@@ -56,19 +56,11 @@ yarn start
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the debug contract tab.
 
-5. Test your smart contract
-
-```
-yarn test
-```
-
-> NOTE: THIS TEST WILL FAIL. In the next section you will fix your smart contract so that it passes.
-
-> The test script for hardhat is located in `packages/hardhat/test`
-
 ---
 
 ## Checkpoint 1: Account display
+
+We want to display the connected account for our user in the frontend. To do this we can use wagmi and Scaffold-ETH hooks.
 
 1. Import useAccount
 
@@ -82,13 +74,41 @@ import { useAccount } from "wagmi";
 const { address } = useAccount();
 ```
 
-3. Read the value for the use
+3. Read the value for the user
 
 ```
         <div className="flex items-center flex-col flex-grow p-5">
           <p>Hello, {address}</p>
           <p>The current value of greeting is {greeting}!</p>
         </div>
+```
+
+4. Use the `<Address />` component from Scaffold-ETH to enhance the UI
+
+Import the `<Address />` component from Scaffold-ETH components at the top of your `index.tsx` file.
+
+```
+import { Address } from "~~/components/scaffold-eth";
+```
+
+Then, change the `address` in your welcome to use the data coming from wagmi useAccount.
+
+```
+<p>Hello, <Address address={address}/></p>
+```
+
+5. Add a `<Balance />` component
+
+While we are here, we can also display the balance of the connected wallet very easily with another Scaffold-ETH Component. Add Balance to your existing import.
+
+```
+import { Address, Balance } from "~~/components/scaffold-eth";
+```
+
+Then add a line to show the users current balance.
+
+```
+<p>Your current balance is <Balance address={address}/></p>
 ```
 
 ---
@@ -113,10 +133,61 @@ uint256 public totalCounter;
 
 ---
 
-## Checkpoint 3: Modifying our frontend
+## Checkpoint 3: Extending our frontend
 
+We now want to create a variable that will show us the current counter keeping track of greetings being changed along with an input and button to update the greeting.
 
+1. Read totalCounter from the contract
 
+First, we will get data from the contract with `useScaffoldContractRead` like we did in the last challenge.
+
+```
+  const { data: totalCounter } = useScaffoldContractRead({
+    contractName: "YourContract",
+    functionName: "totalCounter"
+  });
+```
+
+2. Print the value in your `index.tsx` file
+
+Since the value is now a BigInt we will display this with a `String()` conversion.
+
+```
+          <p>The current value of greeting is {greeting} and has been 
+          changed {String(totalCounter)} times!</p>
+```
+
+3. Add an input field and button to update your greeting.
+
+```
+import { useState } from "react";
+```
+
+```
+        <div className="p-5">
+          <input
+            value={newGreeting}
+            placeholder="Type here"
+            className="input"
+            onChange={(e) => setNewGreeting(e.target.value)}
+          />
+        </div>
+        <div className="p-5">
+          <button className="btn btn-primary" onClick={setGreeting}>
+            Set Greeting
+          </button>
+        </div>
+```
+
+```
+  const [newGreeting, setNewGreeting] = useState("");
+
+  const { writeAsync: setGreeting } = useScaffoldContractWrite({
+    contractName: "YourContract",
+    functionName: "setGreeting",
+    args: [newGreeting],
+  });
+```
 ---
 
 ## Checkpoint 4: 💾 Deploy your contract! 🛰

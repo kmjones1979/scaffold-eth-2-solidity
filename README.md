@@ -123,6 +123,8 @@ uint256 public totalCounter;
 
 2. Create a new function to update our greeting
 
+This function will take in a string and then update the state for `greeting` along with increment the `totalCounter` by 1.
+
 ```
 	function setGreeting(string memory _newGreeting) public {
 		// Change state variables
@@ -159,9 +161,13 @@ First, we will get data from the contract with `useScaffoldContractRead` like we
 
 3. Add an input field and button to update your greeting.
 
+In order to keep track of changes as a user types in a new greeting, we will need some state. Import that first so we have it available to use.
+
 ```
 import { useState } from "react";
 ```
+
+Next create an input along with a button for users to send a new greeting.
 
 ```
         <div className="p-5">
@@ -173,11 +179,13 @@ import { useState } from "react";
           />
         </div>
         <div className="p-5">
-          <button className="btn btn-primary" onClick={setGreeting}>
+          <button className="btn btn-primary" onClick={() => setGreeting()}>
             Set Greeting
           </button>
         </div>
 ```
+
+Create some state to track the values being typed into our input field. Then use the `useScaffoldContractWrite` hook to update our greeting. Notice that this hook requires that you pass in the new greeting as an argument.
 
 ```
   const [newGreeting, setNewGreeting] = useState("");

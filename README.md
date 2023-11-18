@@ -59,15 +59,15 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ---
 
-## Creating a Subgraph
+## Checkpoint 2: Creating a Subgraph
 
 ---
 
-## Checkpoint 2: Extending our frontend
+## Checkpoint 3: Extending our frontend
 
 ---
 
-## Checkpoint 3: 💾 Deploy your contract! 🛰
+## Checkpoint 4: 💾 Deploy your contract! 🛰
 
 🛰 Ready to deploy to a public testnet?!?
 
@@ -105,7 +105,7 @@ Using the command `yarn deploy` will now ship your app to sepolia.
 
 ---
 
-## Checkpoint 4: 🚢 Ship your frontend! 🚁
+## Checkpoint 5: 🚢 Ship your frontend! 🚁
 
 1. Update the Scaffold-ETH configuration
 

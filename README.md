@@ -2,13 +2,10 @@
 
 This toolkit is designed to teach you the concepts of solidity using Scaffold-ETH 2. Curriculum is based on the amazing content from Smart Contract Programer.
 
-# 🚩 Challenge #1: First App
+# 🚩 Challenge #2: Events
 
 In this challenge you will learn about the following concepts:
-- wagmi `useAccount` hook
-- Scaffold-ETH hooks and components
-- Unsigned integers
-- Functions
+- 
 
 ## Checkpoint 0: 📦 Environment 📚
 
@@ -58,139 +55,19 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ---
 
-## Checkpoint 1: Account display
-
-We want to display the connected account for our user in the frontend. To do this we can use wagmi and Scaffold-ETH hooks.
-
-1. Import useAccount
-
-```
-import { useAccount } from "wagmi";
-```
-
-2. Define and set a `address` variable
-
-```
-const { address } = useAccount();
-```
-
-3. Read the value for the user
-
-```
-        <div className="flex items-center flex-col flex-grow p-5">
-          Hello, {address}
-          The current value of greeting is {greeting}!
-        </div>
-```
-
-4. Use the `<Address />` component from Scaffold-ETH to enhance the UI
-
-Import the `<Address />` component from Scaffold-ETH components at the top of your `index.tsx` file.
-
-```
-import { Address } from "~~/components/scaffold-eth";
-```
-
-Then, change the `address` in your welcome to use the data coming from wagmi useAccount.
-
-```
-Hello, <Address address={address}/>
-```
-
-5. Add a `<Balance />` component
-
-While we are here, we can also display the balance of the connected wallet very easily with another Scaffold-ETH Component. Add Balance to your existing import.
-
-```
-import { Address, Balance } from "~~/components/scaffold-eth";
-```
-
-Then add a line to show the users current balance.
-
-```
-Your current balance is <Balance address={address}/>
-```
+## Checkpoint 1: Adding an event
 
 ---
 
-## Checkpoint 2: Adding a counter and function 
-
-1. Create a new public variable `totalCounter`
-
-```
-uint256 public totalCounter;
-```
-
-2. Create a new function to update our greeting
-
-```
-	function setGreeting(string memory _newGreeting) public {
-		// Change state variables
-		greeting = _newGreeting;
-		totalCounter += 1;
-	}
-```
+## Creating a Subgraph
 
 ---
 
-## Checkpoint 3: Extending our frontend
+## Checkpoint 2: Extending our frontend
 
-We now want to create a variable that will show us the current counter keeping track of greetings being changed along with an input and button to update the greeting.
-
-1. Read totalCounter from the contract
-
-First, we will get data from the contract with `useScaffoldContractRead` like we did in the last challenge.
-
-```
-  const { data: totalCounter } = useScaffoldContractRead({
-    contractName: "YourContract",
-    functionName: "totalCounter"
-  });
-```
-
-2. Print the value in your `index.tsx` file
-
-> Since the value is now a BigInt we will display this with a `String()` conversion.
-
-```
-          The current value of greeting is {greeting} and has been 
-          changed {String(totalCounter)} times!
-```
-
-3. Add an input field and button to update your greeting.
-
-```
-import { useState } from "react";
-```
-
-```
-        <div className="p-5">
-          <input
-            value={newGreeting}
-            placeholder="Type here"
-            className="input"
-            onChange={(e) => setNewGreeting(e.target.value)}
-          />
-        </div>
-        <div className="p-5">
-          <button className="btn btn-primary" onClick={setGreeting}>
-            Set Greeting
-          </button>
-        </div>
-```
-
-```
-  const [newGreeting, setNewGreeting] = useState("");
-
-  const { writeAsync: setGreeting } = useScaffoldContractWrite({
-    contractName: "YourContract",
-    functionName: "setGreeting",
-    args: [newGreeting],
-  });
-```
 ---
 
-## Checkpoint 4: 💾 Deploy your contract! 🛰
+## Checkpoint 3: 💾 Deploy your contract! 🛰
 
 🛰 Ready to deploy to a public testnet?!?
 
@@ -228,7 +105,7 @@ Using the command `yarn deploy` will now ship your app to sepolia.
 
 ---
 
-## Checkpoint 5: 🚢 Ship your frontend! 🚁
+## Checkpoint 4: 🚢 Ship your frontend! 🚁
 
 1. Update the Scaffold-ETH configuration
 

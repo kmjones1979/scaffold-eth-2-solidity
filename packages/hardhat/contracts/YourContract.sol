@@ -10,6 +10,13 @@ import "hardhat/console.sol";
  */
 contract YourContract {
 
-	string public greet = "Hello Builders!";
-	
+	string public greeting = "Hello Builders!";
+	uint256 public totalCounter;
+
+	function setGreeting(string memory _newGreeting) public {
+		// Change state variables
+		greeting = _newGreeting;
+		totalCounter += 1;
+	}
+
 }

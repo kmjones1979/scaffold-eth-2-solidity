@@ -222,7 +222,7 @@ Solidity creates a get function for variables that can be used to get the value 
 We will remove the String conversion with the following code.
 
 ```
-<p>The current value of greeting is {greeting}!</p>
+The current value of greeting is {greeting}!
 ```
 
 ---

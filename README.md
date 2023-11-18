@@ -70,18 +70,43 @@ yarn test
 
 ## Checkpoint 1: Account display
 
+1. Import useAccount
+
+```
+import { useAccount } from "wagmi";
+```
+
+2. Define and set a `address` variable
+
+```
+const { address } = useAccount();
+```
+
+3. Read the value for the use
+
+```
+        <div className="flex items-center flex-col flex-grow p-5">
+          <p>Hello, {address}</p>
+          <p>The current value of greeting is {greeting}!</p>
+        </div>
+```
+
 ---
 
 ## Checkpoint 2: Adding a counter and function 
+
+1. Create a new public variable `totalCounter`
 
 ```
 uint256 public totalCounter;
 ```
 
+2. Create a new function to update our greeting
+
 ```
 	function setGreeting(string memory _newGreeting) public {
 		// Change state variables
-		greet = _newGreeting;
+		greeting = _newGreeting;
 		totalCounter += 1;
 	}
 ```
@@ -89,6 +114,8 @@ uint256 public totalCounter;
 ---
 
 ## Checkpoint 3: Modifying our frontend
+
+
 
 ---
 

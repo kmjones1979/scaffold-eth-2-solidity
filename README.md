@@ -2,15 +2,10 @@
 
 This toolkit is designed to teach you the concepts of solidity using Scaffold-ETH 2. Curriculum is based on the amazing content from Smart Contract Programer.
 
-# 🚩 Challenge #0: Hello World
+# 🚩 Challenge #1: First App
 
 In this challenge you will learn about the following concepts:
-- License identifiers
-- Pragmas
-- Editing your smart contract
-- Testing your smart contract
-- Deploying your smart contract
-- Basic frontend updates
+- 
 
 
 ## Checkpoint 0: 📦 Environment 📚
@@ -26,13 +21,13 @@ To get started with Scaffold-ETH 2, follow the steps below:
 1. Clone this repo, checkout the active branch & install dependencies
 
 ```
-git clone -b solidity-0-hello-world \
+git clone -b solidity-1-first-app \
 https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
-solidity-0-hello-world
+solidity-1-first-app
 ```
 
 ```
-cd solidity-0-hello-world
+cd solidity-1-first-app
 ```
 
 ```
@@ -81,149 +76,13 @@ yarn test
 
 ---
 
-## Checkpoint 1: Adding a license identifier
-
-When deploying your contract earlier you may have noticed the following warning:
-
-> Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing `"SPDX-License-Identifier: <SPDX-License>"` to each source file. Use `"SPDX-License-Identifier: UNLICENSED"` for non-open-source code. Please see https://spdx.org for more information.
-
-Trust in smart contracts can be better established if their source code is available. Since making source code available always touches on legal problems with regards to copyright, the Solidity compiler encourages the use of machine-readable SPDX license identifiers. Every source file should start with a comment indicating its license.
-
-1. Add a license to the very top of your smart contract. 
-
-> A list of SPDX License Identifiers can be found [here](https://spdx.org/licenses/).
-
-```
-//SPDX-License-Identifier: MIT
-```
-
-2. Then redeploy your contract using your terminal.
-
-```
-yarn deploy
-```
-
----
-
-## Checkpoint 2: Understanding Pragmas
-
-Source files can (and should) be annotated with a version pragma to reject compilation with future compiler versions that might introduce incompatible changes. We try to keep these to an absolute minimum and introduce them in a way that changes in semantics also require changes in the syntax, but this is not always possible. 
-
-1. Check which version of solidity is configured in the Hardhat configuration. 
-
-> The hardhat configuration file is located at `packages/hardhat/hardhat.config.ts`.
-
-In the below example we have version 0.8.17 available to use in our contracts.
-
-```
-  solidity: {
-    version: "0.8.17",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200,
-      },
-    },
-```
-
-2. Update your pragma to use up to that specific version.
-
-```
-pragma solidity ^0.8.17;
-```
-
-3. Then redeploy your contract using your terminal.
-
-```
-yarn deploy
-```
-
----
-
 ## Checkpoint 3: Fixing our test
 
-Check the hardhat test located in `packages/hardhat/test`. You will notice that the test is checking that the response from yourContract.greet() is equal to a string value of "Hello Builders!"
-
-```
-    it("Should have the right message on deploy", async function () {
-      expect(await yourContract.greet()).to.equal("Hello Builders!");
-    });
-```
-
-1. Fix the variable in your smart contract to match the required value.
-
-```
-string public greet = "Hello Builders!";
-```
-
-2. Then redeploy your contract using your terminal.
-
-```
-yarn deploy
-```
-
-3. Test you smart contract
-
-```
-yarn test
-```
-
-You should see the following passing output after updating your change and testing.
-
-```
-  YourContract
-    Deployment
-      ✓ Should have the right message on deploy
-
-·------------------------|---------------------------|-------------|-----------------------------·
-|  Solc version: 0.8.17  ·  Optimizer enabled: true  ·  Runs: 200  ·  Block limit: 30000000 gas  │
-·························|···························|·············|······························
-|  Methods                                                                                       │
-··············|··········|·············|·············|·············|···············|··············
-|  Contract   ·  Method  ·  Min        ·  Max        ·  Avg        ·  # calls      ·  usd (avg)  │
-··············|··········|·············|·············|·············|···············|··············
-|  Deployments           ·                                         ·  % of limit   ·             │
-·························|·············|·············|·············|···············|··············
-|  YourContract          ·          -  ·          -  ·     170499  ·        0.6 %  ·          -  │
-·------------------------|-------------|-------------|-------------|---------------|-------------·
-
-  1 passing (585ms)
-```
 
 ---
 
 ## Checkpoint 4: Modifying our frontend
 
-Open up `packages/nextjs/pages/index.tsx` and examine the source code. Notice that the current value of `greet` is set to `null`. If needed reference the Scaffold-ETH docs below.
-
-> [Scaffold-ETH 2 Docs - useScaffoldContractRead](https://docs.scaffoldeth.io/hooks/useScaffoldContractRead)
-
-1. Import useScaffoldContractRead
-
-First at the top of your `index.tsx` file import the Scaffold-ETH hooks library.
-
-```
-import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
-```
-
-2. Configure the data value for greet to call useScaffoldContractRead
-
-Solidity creates a get function for variables that can be used to get the value of their current state. Let's configure the value in our nextJS application to pull the value with useScaffoldContractRead.
-
-```
-  const { data: greet } = useScaffoldContractRead({
-    contractName: "YourContract",
-    functionName: "greet"
-  });
-```
-
-3. Optional, clean up your variable print to not force a string type
-
-We will remove the String conversion with the following code.
-
-```
-<p>The current value of greet is {greet}!</p>
-```
 
 ---
 

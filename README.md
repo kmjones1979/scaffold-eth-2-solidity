@@ -72,19 +72,27 @@ yarn test
 
 ---
 
-## Checkpoint 2: Adding a function to update the greeting and counter
+## Checkpoint 2: Adding a counter and function 
+
+```
+uint256 public totalCounter;
+```
+
+```
+	function setGreeting(string memory _newGreeting) public {
+		// Change state variables
+		greet = _newGreeting;
+		totalCounter += 1;
+	}
+```
 
 ---
 
-## Checkpoint 3: Fixing our test
+## Checkpoint 3: Modifying our frontend
 
 ---
 
-## Checkpoint 4: Modifying our frontend
-
----
-
-## Checkpoint 5: 💾 Deploy your contract! 🛰
+## Checkpoint 4: 💾 Deploy your contract! 🛰
 
 🛰 Ready to deploy to a public testnet?!?
 
@@ -122,7 +130,7 @@ Using the command `yarn deploy` will now ship your app to sepolia.
 
 ---
 
-## Checkpoint 4: 🚢 Ship your frontend! 🚁
+## Checkpoint 5: 🚢 Ship your frontend! 🚁
 
 1. Update the Scaffold-ETH configuration
 

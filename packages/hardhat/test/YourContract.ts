@@ -25,12 +25,12 @@ describe("YourContract", function () {
     it("Should increment the counter after a new greeting", async function () {
       expect(await yourContract.totalCounter()).to.equal(1);
     });
-    it("Should emit a NewGreeting event after a new greeting", async function () {
+    it("Should emit a GreetingChange event after a new greeting", async function () {
       const newGreeting = "Testing an event!";
 
       await expect(yourContract.setGreeting(newGreeting))
         .to.emit(yourContract, "GreetingChange")
-        .withArgs("0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", newGreeting);
+        .withArgs("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", newGreeting);
     });
   });
 });

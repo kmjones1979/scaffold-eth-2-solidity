@@ -5,7 +5,9 @@ This toolkit is designed to teach you the concepts of solidity using Scaffold-ET
 # 🚩 Challenge #2: Events
 
 In this challenge you will learn about the following concepts:
-- 
+- Events
+- Subgraphs with The Graph
+- Apollo Client
 
 ## Checkpoint 0: 📦 Environment 📚
 
@@ -20,13 +22,13 @@ To get started with Scaffold-ETH 2, follow the steps below:
 1. Clone this repo, checkout the active branch & install dependencies
 
 ```
-git clone -b solidity-1-first-app \
+git clone -b solidity-2-events \
 https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
-solidity-1-first-app
+solidity-2-events
 ```
 
 ```
-cd solidity-1-first-app
+cd solidity-2-events
 ```
 
 ```
@@ -59,15 +61,11 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ---
 
-## Checkpoint 2: Creating a Subgraph
+## Checkpoint 2: Extending our frontend
 
 ---
 
-## Checkpoint 3: Extending our frontend
-
----
-
-## Checkpoint 4: 💾 Deploy your contract! 🛰
+## Checkpoint 3: 💾 Deploy your contract! 🛰
 
 🛰 Ready to deploy to a public testnet?!?
 
@@ -105,7 +103,7 @@ Using the command `yarn deploy` will now ship your app to sepolia.
 
 ---
 
-## Checkpoint 5: 🚢 Ship your frontend! 🚁
+## Checkpoint 4: 🚢 Ship your frontend! 🚁
 
 1. Update the Scaffold-ETH configuration
 

@@ -9,6 +9,6 @@ import "hardhat/console.sol";
  */
 contract YourContract {
 
-	string public greet = "Hello World!";
+	string public greeting = "Hello World!";
 	
 }

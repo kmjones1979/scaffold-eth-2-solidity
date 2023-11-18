@@ -142,18 +142,18 @@ yarn deploy
 
 ## Checkpoint 3: Fixing our test
 
-Check the hardhat test located in `packages/hardhat/test`. You will notice that the test is checking that the response from yourContract.greet() is equal to a string value of "Hello Builders!"
+Check the hardhat test located in `packages/hardhat/test`. You will notice that the test is checking that the response from yourContract.greeting() is equal to a string value of "Hello Builders!"
 
 ```
     it("Should have the right message on deploy", async function () {
-      expect(await yourContract.greet()).to.equal("Hello Builders!");
+      expect(await yourContract.greeting()).to.equal("Hello Builders!");
     });
 ```
 
 1. Fix the variable in your smart contract to match the required value.
 
 ```
-string public greet = "Hello Builders!";
+string public greeting = "Hello Builders!";
 ```
 
 2. Then redeploy your contract using your terminal.
@@ -194,7 +194,7 @@ You should see the following passing output after updating your change and testi
 
 ## Checkpoint 4: Modifying our frontend
 
-Open up `packages/nextjs/pages/index.tsx` and examine the source code. Notice that the current value of `greet` is set to `null`. If needed reference the Scaffold-ETH docs below.
+Open up `packages/nextjs/pages/index.tsx` and examine the source code. Notice that the current value of `greeting` is set to `null`. If needed reference the Scaffold-ETH docs below.
 
 > [Scaffold-ETH 2 Docs - useScaffoldContractRead](https://docs.scaffoldeth.io/hooks/useScaffoldContractRead)
 
@@ -206,14 +206,14 @@ First at the top of your `index.tsx` file import the Scaffold-ETH hooks library.
 import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
 ```
 
-2. Configure the data value for greet to call useScaffoldContractRead
+2. Configure the data value for greeting to call useScaffoldContractRead
 
 Solidity creates a get function for variables that can be used to get the value of their current state. Let's configure the value in our nextJS application to pull the value with useScaffoldContractRead.
 
 ```
-  const { data: greet } = useScaffoldContractRead({
+  const { data: greeting } = useScaffoldContractRead({
     contractName: "YourContract",
-    functionName: "greet"
+    functionName: "greeting"
   });
 ```
 
@@ -222,7 +222,7 @@ Solidity creates a get function for variables that can be used to get the value 
 We will remove the String conversion with the following code.
 
 ```
-<p>The current value of greet is {greet}!</p>
+<p>The current value of greeting is {greeting}!</p>
 ```
 
 ---

@@ -1,12 +1,16 @@
-import Link from "next/link";
 import type { NextPage } from "next";
-import { BugAntIcon, MagnifyingGlassIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { MetaHeader } from "~~/components/MetaHeader";
 
 const Home: NextPage = () => {
+  const greet = null;
   return (
     <>
       <MetaHeader />
+      <div className="body">
+        <div className="flex items-center flex-col flex-grow p-5">
+          <p>The current value of greet is {String(greet)}!</p>
+        </div>
+      </div>
     </>
   );
 };

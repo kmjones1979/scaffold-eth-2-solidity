@@ -21,6 +21,16 @@ h4 {
 
 p {
   margin: 1rem 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  margin: 25px;
+  width: auto;
+  height: auto;
+  align-content: center;
+  position: relative;
 }
 
 .btn {

@@ -180,6 +180,8 @@ You should see the following passing output after updating your change and testi
   1 passing (585ms)
 ```
 
+## Checkpoint 4: Modifying our frontend
+
 ## Additional Resources / Source Credit
 
 - [Solidity-by-example - Hello World](https://solidity-by-example.org/hello-world/)

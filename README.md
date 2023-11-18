@@ -59,13 +59,97 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Checkpoint 1: Adding an event
 
+```
+	// Configure an event and its data types
+	event GreetingChange(
+		address indexed greetingSetter,
+		string newGreeting
+	);
+```
+
+```
+		// Emit the event
+		emit GreetingChange(msg.sender, _newGreeting);
+```
+
 ---
 
-## Checkpoint 2: Extending our frontend
+## Checkpoint 2: Subscribing to events
+
+```
+import { 
+  useScaffoldContractRead,
+  useScaffoldContractWrite,
+  useScaffoldEventSubscriber 
+} from "~~/hooks/scaffold-eth";
+```
+
+```
+  useScaffoldEventSubscriber({
+    contractName: "YourContract",
+    eventName: "GreetingChange",
+    listener: logs => {
+      logs.map(log => {
+        const { greetingSetter, newGreeting } = log.args;
+        console.log("📡 GreetingChange event", greetingSetter, newGreeting);
+      });
+    },
+  });
+```
 
 ---
 
-## Checkpoint 3: 💾 Deploy your contract! 🛰
+## Checkpoint 3: Displaying events in frontend
+
+```
+import { 
+  useScaffoldContractRead, 
+  useScaffoldContractWrite, 
+  useScaffoldEventHistory, 
+  useScaffoldEventSubscriber 
+} from "~~/hooks/scaffold-eth";
+```
+
+```
+  const {
+    data: events,
+    isLoading: isLoadingEvents,
+    error: errorReadingEvents,
+  } = useScaffoldEventHistory({
+    contractName: "YourContract",
+    eventName: "GreetingChange",
+    // Specify the starting block number from which to read events, this is a bigint.
+    fromBlock: 0n,
+    blockData: true,
+  });
+```
+
+```
+          <div>
+            {events && events.length > 0 && (
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Greeting Setter</th>
+                    <th>New Greeting</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {events.map((event, index) => (
+                    <tr key={index}>
+                      <td><Address address={event.args.greetingSetter} /></td>
+                      <td>{event.args.newGreeting}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+```
+
+---
+
+## Checkpoint 4: 💾 Deploy your contract! 🛰
 
 🛰 Ready to deploy to a public testnet?!?
 
@@ -103,7 +187,7 @@ Using the command `yarn deploy` will now ship your app to sepolia.
 
 ---
 
-## Checkpoint 4: 🚢 Ship your frontend! 🚁
+## Checkpoint 5: 🚢 Ship your frontend! 🚁
 
 1. Update the Scaffold-ETH configuration
 

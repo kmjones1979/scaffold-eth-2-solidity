@@ -16,11 +16,14 @@ describe("YourContract", function () {
     it("Should have the right message on deploy", async function () {
       expect(await yourContract.greeting()).to.equal("Hello Builders!");
     });
-    it("Should allow setting a new message", async function () {
+    it("Should allow setting a new greeting", async function () {
       const newGreeting = "Learn Scaffold-ETH 2! :)";
 
       await yourContract.setGreeting(newGreeting);
       expect(await yourContract.greeting()).to.equal(newGreeting);
+    });
+    it("Should increment the counter after a new greeting", async function () {
+      expect(await yourContract.totalCounter()).to.equal(1);
     });
   });
 });

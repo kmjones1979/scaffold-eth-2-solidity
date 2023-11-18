@@ -6,7 +6,7 @@ This toolkit is designed to teach you the concepts of solidity using Scaffold-ET
 
 In this challenge you will learn about the following concepts:
 - wagmi `useAccount` hook
-- Scaffold-ETH `<Address />` component
+- Scaffold-ETH hooks and components
 - Unsigned integers
 - Functions
 
@@ -78,8 +78,8 @@ const { address } = useAccount();
 
 ```
         <div className="flex items-center flex-col flex-grow p-5">
-          <p>Hello, {address}</p>
-          <p>The current value of greeting is {greeting}!</p>
+          Hello, {address}
+          The current value of greeting is {greeting}!
         </div>
 ```
 
@@ -94,7 +94,7 @@ import { Address } from "~~/components/scaffold-eth";
 Then, change the `address` in your welcome to use the data coming from wagmi useAccount.
 
 ```
-<p>Hello, <Address address={address}/></p>
+Hello, <Address address={address}/>
 ```
 
 5. Add a `<Balance />` component
@@ -108,7 +108,7 @@ import { Address, Balance } from "~~/components/scaffold-eth";
 Then add a line to show the users current balance.
 
 ```
-<p>Your current balance is <Balance address={address}/></p>
+Your current balance is <Balance address={address}/>
 ```
 
 ---
@@ -150,11 +150,11 @@ First, we will get data from the contract with `useScaffoldContractRead` like we
 
 2. Print the value in your `index.tsx` file
 
-Since the value is now a BigInt we will display this with a `String()` conversion.
+> Since the value is now a BigInt we will display this with a `String()` conversion.
 
 ```
-          <p>The current value of greeting is {greeting} and has been 
-          changed {String(totalCounter)} times!</p>
+          The current value of greeting is {greeting} and has been 
+          changed {String(totalCounter)} times!
 ```
 
 3. Add an input field and button to update your greeting.
@@ -278,8 +278,8 @@ For production-grade applications, it's recommended to obtain your own API keys 
 
 ## Additional Resources / Source Credit
 
-- [Solidity-by-example - Hello World](https://solidity-by-example.org/hello-world/)
-- [Layout of a Solidity Source File](https://docs.soliditylang.org/en/develop/layout-of-source-files.html)
+- [Solidity-by-example - First Application](https://solidity-by-example.org/first-app/)
+- [Structure of a Contract](https://docs.soliditylang.org/en/develop/structure-of-a-contract.html)
 
 
 ## Documentation

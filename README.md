@@ -5,8 +5,10 @@ This toolkit is designed to teach you the concepts of solidity using Scaffold-ET
 # 🚩 Challenge #1: First App
 
 In this challenge you will learn about the following concepts:
-- 
-
+- wagmi `useAccount` hook
+- Scaffold-ETH `<Address />` component
+- Unsigned integers
+- Functions
 
 ## Checkpoint 0: 📦 Environment 📚
 
@@ -40,19 +42,11 @@ yarn install
 yarn chain
 ```
 
-This command starts a local Ethereum network using Hardhat that can be used for testing and development. 
-
-> The hardhat configuration file is located at `packages/hardhat/hardhat.config.ts`.
-
 3. On a second terminal, deploy the test contract:
 
 ```
 yarn deploy
 ```
-
-> The smart contract is located in `packages/hardhat/contracts`
-
-> The deploy script for hardhat is located in `packages/hardhat/deploy`
 
 4. On a third terminal, start your NextJS app:
 
@@ -61,8 +55,6 @@ yarn start
 ```
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the debug contract tab.
-
-> The app config for Scaffold-ETH 2 is located in `packages/nextjs/scaffold.config.ts`
 
 5. Test your smart contract
 
@@ -76,13 +68,19 @@ yarn test
 
 ---
 
-## Checkpoint 3: Fixing our test
+## Checkpoint 1: Account display
 
+---
+
+## Checkpoint 2: Adding a function to update the greeting and counter
+
+---
+
+## Checkpoint 3: Fixing our test
 
 ---
 
 ## Checkpoint 4: Modifying our frontend
-
 
 ---
 

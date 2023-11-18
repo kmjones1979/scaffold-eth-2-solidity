@@ -16,5 +16,11 @@ describe("YourContract", function () {
     it("Should have the right message on deploy", async function () {
       expect(await yourContract.greet()).to.equal("Hello Builders!");
     });
+    it("Should allow setting a new message", async function () {
+      const newGreeting = "Learn Scaffold-ETH 2! :)";
+
+      await yourContract.setGreeting(newGreeting);
+      expect(await yourContract.greet()).to.equal(newGreeting);
+    });
   });
 });

@@ -146,6 +146,10 @@ Check the hardhat test located in `packages/hardhat/test`. You will notice that 
 
 1. Fix the variable in your smart contract to match the required value.
 
+```
+string public greet = "Hello Builders!";
+```
+
 2. Then redeploy your contract using your terminal.
 
 ```
@@ -181,6 +185,37 @@ You should see the following passing output after updating your change and testi
 ```
 
 ## Checkpoint 4: Modifying our frontend
+
+Open up `packages/nextjs/pages/index.tsx` and examine the source code. Notice that the current value of `greet` is set to `null`. If needed reference the Scaffold-ETH docs below.
+
+> [Scaffold-ETH 2 Docs - useScaffoldContractRead](https://docs.scaffoldeth.io/hooks/useScaffoldContractRead)
+
+1. Import useScaffoldContractRead
+
+First at the top of your `index.tsx` file import the Scaffold-ETH hooks library.
+
+```
+import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
+```
+
+2. Configure the data value for greet to call useScaffoldContractRead
+
+Solidity creates a get function for variables that can be used to get the value of their current state. Let's configure the value in our nextJS application to pull the value with useScaffoldContractRead.
+
+```
+  const { data: greet } = useScaffoldContractRead({
+    contractName: "YourContract",
+    functionName: "greet"
+  });
+```
+
+3. Optional, clean up your variable print to not force a string type
+
+We will remove the String conversion with the following code.
+
+```
+<p>The current value of greet is {greet}!</p>
+```
 
 ## Additional Resources / Source Credit
 

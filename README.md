@@ -167,6 +167,60 @@ query MyQuery {
 
 ## Checkpoint 3: Update our table to reflect data from The Graph
 
+```
+import { useQuery } from "@apollo/client";
+import gql from "graphql-tag";
+```
+
+```
+const MY_QUERY = gql`
+  query MyQuery {
+    greetings(first: 10) {
+      greeting
+      sender {
+        address
+      }
+    }
+  }
+`;
+```
+
+```
+  const { loading, error, data } = useQuery(MY_QUERY);
+
+  // Check for loading and error states
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  
+  // Access the data from the GraphQL query
+  const greetings = data.greetings;
+```
+
+```
+          <div>
+            {greetings && greetings.length > 0 && (
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Greeting Setters</th>
+                    <th>New Greeting</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {greetings.map((greeting, index) => (
+                    <tr key={index}>
+                      <td>
+                        <Address address={greeting.sender.address} />
+                      </td>
+                      <td>{greeting.greeting}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+```
+
 ---
 
 ## Additional Resources / Source Credit

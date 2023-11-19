@@ -6,8 +6,8 @@ This toolkit is designed to teach you the concepts of solidity using Scaffold-ET
 
 In this challenge you will learn about the following concepts:
 - Events
-- Subgraphs with The Graph
-- Apollo Client
+- useScaffoldEventHistory hook
+- useScaffoldEventSubscriber hook
 
 ## Checkpoint 0: 📦 Environment 📚
 
@@ -59,6 +59,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Checkpoint 1: Adding an event
 
+1. Create an event that will pass the `address` and `string` data types coming from the smart contract when the greeting is set.
+
 ```
 	// Configure an event and its data types
 	event GreetingChange(
@@ -66,6 +68,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 		string newGreeting
 	);
 ```
+
+2. Add the emit function to the setGreeting function using `msg.sender` and the new greeting being passed across in arguments.
 
 ```
 		// Emit the event
@@ -76,6 +80,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Checkpoint 2: Subscribing to events
 
+1. Import the `useScaffoldEventSubscriber` hook from Scaffold-ETH so that we can subscribe to events.
+
 ```
 import { 
   useScaffoldContractRead,
@@ -83,6 +89,8 @@ import {
   useScaffoldEventSubscriber 
 } from "~~/hooks/scaffold-eth";
 ```
+
+2. Create a subscription using `useScaffoldEventSubscriber` hook, passing the needed values. We will log this data in our console using `console.log`.
 
 ```
   useScaffoldEventSubscriber({
@@ -101,6 +109,8 @@ import {
 
 ## Checkpoint 3: Displaying events in frontend
 
+1. Import `useScaffoldEventHistory` from Scaffold-ETH hooks.
+
 ```
 import { 
   useScaffoldContractRead, 
@@ -110,11 +120,11 @@ import {
 } from "~~/hooks/scaffold-eth";
 ```
 
+2. Create a data object where we can store the array of all events.
+
 ```
   const {
     data: events,
-    isLoading: isLoadingEvents,
-    error: errorReadingEvents,
   } = useScaffoldEventHistory({
     contractName: "YourContract",
     eventName: "GreetingChange",
@@ -123,6 +133,8 @@ import {
     blockData: true,
   });
 ```
+
+3. Update our frontend so that we can display the results in table format. We will use a map to loop through the index of the array.
 
 ```
           <div>
@@ -237,7 +249,7 @@ For production-grade applications, it's recommended to obtain your own API keys 
 
 ## Additional Resources / Source Credit
 
-- [Solidity-by-example - First Application](https://solidity-by-example.org/first-app/)
+- [Solidity-by-example - Events](https://solidity-by-example.org/events/)
 - [Structure of a Contract](https://docs.soliditylang.org/en/develop/structure-of-a-contract.html)
 
 

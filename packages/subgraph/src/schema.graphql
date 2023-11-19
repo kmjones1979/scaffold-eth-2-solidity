@@ -2,8 +2,6 @@ type Greeting @entity {
   id: ID!
   sender: Sender!
   greeting: String!
-  premium: Boolean
-  value: BigInt
   createdAt: BigInt!
   transactionHash: String!
 }

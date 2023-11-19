@@ -5,7 +5,19 @@ This toolkit is designed to teach you the concepts of solidity using Scaffold-ET
 # 🚩 Challenge #3: The Graph
 
 In this challenge you will learn about the following concepts:
-- The Graph
+- The Graph (manifest, schema, entities and handlers)
+- GraphiQL
+- Apollo Client
+
+## 🧑🏼‍🚀 The Graph
+
+[The Graph](https://thegraph.com/) is a protocol for building decentralized applications (dApps) quickly on Ethereum and IPFS using GraphQL.
+
+- 🗃️ **Decentralized Indexing**: The Graph enables open APIs ("subgraphs") to efficiently index and organize blockchain data.
+- 🔎 **Efficient Querying**: The protocol uses GraphQL for streamlined querying blockchain data.
+- 🙌 **Community Ecosystem**: The Graph fosters collaboration by empowering developers to build, deploy, and share subgraphs!
+
+For detailed instructions and more context, check out the [Getting Started Guide](https://thegraph.com/docs/en/cookbook/quick-start).
 
 ## Checkpoint 0: 📦 Environment 📚
 
@@ -55,103 +67,110 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ---
 
-## Checkpoint 1:
+## Checkpoint 1: Spin up The Graph (on Docker)
+
+1. In a new terminal spin up The Graph
+
+Running the following command will clear up any old data.  Do this if you need to reset everything.
+
+```
+yarn clean-node
+```
+
+Next spin up the entire stack using `yarn run-node` which will utilize the `docker-compose.yml` located in the graph-node folder.
+
+```
+yarn run-node
+```
+
+This will spin up all the containers for The Graph using docker-compose. You will want to keep this window open at all times so that you can see log output from Docker.
+
+> As stated before, be sure to keep this window open so that you can see any log output from Docker. 🔎
 
 ---
 
-## Checkpoint 2:
+## Checkpoint 2: Deploy the Subgraph
+
+- subgraph.yaml (manifest)
+- schema.graphql
+- mapping.ts (handlers)
+
+1. Create the local subgraph
+
+In this forth window we will create our local subgraph! 
+
+> Note: You will only need to do this once.
+
+```
+yarn local-create
+```
+
+> You should see some output stating your Subgraph has been created along with a log output on your graph-node inside docker.
+
+2. Ship your subgraph
+
+Next we will ship our subgraph! You will need to give your subgraph a version after executing this command. (e.g. 0.0.1).
+
+```
+yarn local-ship
+```
+
+> This command does the following all in one… 🚀🚀🚀
+
+- Copies the contracts ABI from the hardhat/deployments folder
+- Generates the networks.json file
+- Generates AssemblyScript types from the subgraph schema and the contract ABIs.
+- Compiles and checks the mapping functions.
+- … and deploy a local subgraph!
+
+> If you get an error ts-node you can install it with the following command
+
+```
+npm install -g ts-node
+```
+
+You should get a build completed output along with the address of your Subgraph endpoint.
+
+```
+Build completed: QmYdGWsVSUYTd1dJnqn84kJkDggc2GD9RZWK5xLVEMB9iP
+
+Deployed to http://localhost:8000/subgraphs/name/scaffold-eth/your-contract/graphql
+
+Subgraph endpoints:
+Queries (HTTP):     http://localhost:8000/subgraphs/name/scaffold-eth/your-contract
+```
+
+3. Test your subgraph
+
+Go ahead and head over to your subgraph endpoint and take a look!
+
+> Here is an example query…
+
+```
+  {
+    greetings(first: 25, orderBy: createdAt, orderDirection: desc) {
+      id
+      greeting
+      premium
+      value
+      createdAt
+      sender {
+        address
+        greetingCount
+      }
+    }
+  }
+```
+
+> If all is well and you’ve sent a transaction to your smart contract then you will see a similar data output!
+
+Next up we will dive into a bit more detail on how The Graph works so that as you start adding events to your smart contract you can start indexing and parsing the data you need for your front end application.
 
 ---
 
-## Checkpoint 3:
+## Checkpoint 3: Update our table to reflect data from The Graph
 
 ---
-
-## Checkpoint 4: 💾 Deploy your contract! 🛰
-
-🛰 Ready to deploy to a public testnet?!?
-
-1. Update the Hardhat config
-
-> Change the defaultNetwork in `packages/hardhat/hardhat.config.ts` to use `sepolia`.
-
-```
-defaultNetwork: "sepolia",
-```
-
-2. Generate a deployer
-
-🔐 Generate a deployer address with `yarn generate`. This creates a unique deployer address and saves the mnemonic locally.
-
-> This local account will deploy your contracts, allowing you to avoid entering a personal private key.
-
-![chall-0-yarn-generate](https://github.com/scaffold-eth/se-2-challenges/assets/2486142/133f5701-e575-4cc2-904f-cdc83ae86d94)
-
-👩‍🚀 Use `yarn account` to view your deployer account balances.
-
-![chall-0-yarn-account](https://github.com/scaffold-eth/se-2-challenges/assets/2486142/c34df8c9-9793-4a76-849b-170fae7fd0f0)
-
-⛽️ You will need to send ETH to your deployer address with your wallet, or get it from a public faucet of your chosen network.
-
-> Some popular faucets are [https://sepoliafaucet.com/](https://sepoliafaucet.com/) and [https://www.infura.io/faucet/sepolia](https://www.infura.io/faucet/sepolia)
-
-> ⚔️ Side Quest: Keep a 🧑‍🎤 [punkwallet.io](https://punkwallet.io) on your phone's home screen and keep it loaded with testnet eth. 🧙‍♂️ You'll look like a wizard when you can fund your deployer address from your phone in seconds.
-
-3. 🚀 Deploy your smart contract 
-
-Using the command `yarn deploy` will now ship your app to sepolia.
-
-> 💬 Hint: If you don't want to update the Hardhat config, you can simply use `yarn deploy --network sepolia`.
-
----
-
-## Checkpoint 5: 🚢 Ship your frontend! 🚁
-
-1. Update the Scaffold-ETH configuration
-
-> ✏️ Edit your config in `packages/nextjs/scaffold.config.ts` to change the `targetNetwork` to `chains.sepolia` :
-
-```
-const scaffoldConfig = {
-  // The network where your DApp lives in
-  targetNetwork: chains.hardhat,
-
-  ...
-}
-```
-
-> You should see the correct network in the frontend (http://localhost:3000):
-
-![image](https://github.com/scaffold-eth/se-2-challenges/assets/80153681/50eef1f7-e1a3-4b3b-87e2-59c19362c4ff)
-
-> 🦊 Since we have deployed to a public testnet, you will now need to connect using a wallet you own or use a burner wallet. By default 🔥 `burner wallets` are only available on `hardhat` . You can enable them on every chain by setting `onlyLocalBurnerWallet: false` in your frontend config (`scaffold.config.ts` in `packages/nextjs/`)
-
-> 💬 Hint: For faster loading of your transfer page, consider updating the `fromBlock` passed to `useScaffoldEventHistory` in [`packages/nextjs/pages/transfers.tsx`](https://github.com/scaffold-eth/se-2-challenges/blob/c18ed9bd202b8614da6775a189937b4facb58929/packages/nextjs/pages/transfers.tsx#L11) to `blocknumber - 10` at which your contract was deployed. Example: `fromBlock: 3750241n` (where `n` represents its a [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)). To find this blocknumber, search your contract's address on Etherscan and find the `Contract Creation` transaction line.
-
-2. 🚀 Deploy your NextJS App
-
-```shell
-yarn vercel
-```
-
-> Follow the steps to deploy to Vercel. Once you log in (email, github, etc), the default options should work. It'll give you a public URL.
-
-> If you want to redeploy to the same production URL you can run `yarn vercel --prod`. If you omit the `--prod` flag it will deploy it to a preview/test URL.
-
-
-#### Configuration of Third-Party Services for Production-Grade Apps.
-
-By default, 🏗 Scaffold-ETH 2 provides predefined API keys for popular services such as Alchemy and Etherscan. This allows you to begin developing and testing your applications more easily, avoiding the need to register for these services.  
-This is great to complete your **SpeedRunEthereum**.
-
-For production-grade applications, it's recommended to obtain your own API keys (to prevent rate limiting issues). You can configure these at:
-
-- 🔷`ALCHEMY_API_KEY` variable in `packages/hardhat/.env` and `packages/nextjs/.env.local`. You can create API keys from the [Alchemy dashboard](https://dashboard.alchemy.com/).
-
-- 📃`ETHERSCAN_API_KEY` variable in `packages/hardhat/.env` with your generated API key. You can get your key [here](https://etherscan.io/myapikey).g
-
-> 💬 Hint: It's recommended to store env's for nextjs in Vercel/system env config for live apps and use .env.local for local testing.
-
 
 ## Additional Resources / Source Credit
 

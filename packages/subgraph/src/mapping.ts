@@ -25,8 +25,6 @@ export function handleGreetingChange(event: GreetingChange): void {
 
   greeting.greeting = event.params.newGreeting;
   greeting.sender = senderString;
-  greeting.premium = event.params.premium;
-  greeting.value = event.params.value;
   greeting.createdAt = event.block.timestamp;
   greeting.transactionHash = event.transaction.hash.toHex();
 

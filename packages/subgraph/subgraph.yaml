@@ -21,6 +21,6 @@ dataSources:
         - name: YourContract
           file: ./abis/localhost_YourContract.json
       eventHandlers:
-        - event: GreetingChange(indexed address,string,bool,uint256)
+        - event: GreetingChange(indexed address,string)
           handler: handleGreetingChange
       file: ./src/mapping.ts

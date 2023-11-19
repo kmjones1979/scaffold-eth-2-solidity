@@ -91,9 +91,13 @@ This will spin up all the containers for The Graph using docker-compose. You wil
 
 ## Checkpoint 2: Deploy the Subgraph
 
-- subgraph.yaml (manifest)
-- schema.graphql
-- mapping.ts (handlers)
+A subgraph configuration consists of the following files:
+
+- subgraph.yaml - referred to as the manifest, this file holds details about the contract (such as network, address and ABI), as well as the subgraph entities and handlers (located inside the `schema.graphql` and `mapping.ts` )
+- schema.graphql - contains the data types for each entity and other configuration specifics like enums and interfaces 
+- Mappings (e.g. `mappings.ts) - AssemblyScript code that translates from the event data to the entities defined in your schema
+
+
 
 1. Create the local subgraph
 
@@ -142,29 +146,22 @@ Queries (HTTP):     http://localhost:8000/subgraphs/name/scaffold-eth/your-contr
 
 3. Test your subgraph
 
-Go ahead and head over to your subgraph endpoint and take a look!
+Go ahead and head over to your [subgraph endpoint](http://localhost:8000/subgraphs/name/scaffold-eth/your-contract/graphql) and take a look!
 
-> Here is an example query…
+> Here is an example query 
 
 ```
-  {
-    greetings(first: 25, orderBy: createdAt, orderDirection: desc) {
-      id
-      greeting
-      premium
-      value
-      createdAt
-      sender {
-        address
-        greetingCount
-      }
+query MyQuery {
+  greetings {
+    greeting
+    sender {
+      address
     }
   }
+}
 ```
 
 > If all is well and you’ve sent a transaction to your smart contract then you will see a similar data output!
-
-Next up we will dive into a bit more detail on how The Graph works so that as you start adding events to your smart contract you can start indexing and parsing the data you need for your front end application.
 
 ---
 

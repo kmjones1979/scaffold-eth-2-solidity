@@ -2,12 +2,10 @@
 
 This toolkit is designed to teach you the concepts of solidity using Scaffold-ETH 2. Curriculum is based on the amazing content from Smart Contract Programer.
 
-# 🚩 Challenge #2: Events
+# 🚩 Challenge #3: The Graph
 
 In this challenge you will learn about the following concepts:
-- Events
-- useScaffoldEventHistory hook
-- useScaffoldEventSubscriber hook
+- The Graph
 
 ## Checkpoint 0: 📦 Environment 📚
 
@@ -57,107 +55,15 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ---
 
-## Checkpoint 1: Adding an event
-
-1. Create an event that will pass the `address` and `string` data types coming from the smart contract when the greeting is set.
-
-```
-	// Configure an event and its data types
-	event GreetingChange(
-		address indexed greetingSetter,
-		string newGreeting
-	);
-```
-
-2. Add the emit function to the setGreeting function using `msg.sender` and the new greeting being passed across in arguments.
-
-```
-		// Emit the event
-		emit GreetingChange(msg.sender, _newGreeting);
-```
+## Checkpoint 1:
 
 ---
 
-## Checkpoint 2: Subscribing to events
-
-1. Import the `useScaffoldEventSubscriber` hook from Scaffold-ETH so that we can subscribe to events.
-
-```
-import { 
-  useScaffoldContractRead,
-  useScaffoldContractWrite,
-  useScaffoldEventSubscriber 
-} from "~~/hooks/scaffold-eth";
-```
-
-2. Create a subscription using `useScaffoldEventSubscriber` hook, passing the needed values. We will log this data in our console using `console.log`.
-
-```
-  useScaffoldEventSubscriber({
-    contractName: "YourContract",
-    eventName: "GreetingChange",
-    listener: logs => {
-      logs.map(log => {
-        const { greetingSetter, newGreeting } = log.args;
-        console.log("📡 GreetingChange event", greetingSetter, newGreeting);
-      });
-    },
-  });
-```
+## Checkpoint 2:
 
 ---
 
-## Checkpoint 3: Displaying events in frontend
-
-1. Import `useScaffoldEventHistory` from Scaffold-ETH hooks.
-
-```
-import { 
-  useScaffoldContractRead, 
-  useScaffoldContractWrite, 
-  useScaffoldEventHistory, 
-  useScaffoldEventSubscriber 
-} from "~~/hooks/scaffold-eth";
-```
-
-2. Create a data object where we can store the array of all events.
-
-```
-  const {
-    data: events,
-  } = useScaffoldEventHistory({
-    contractName: "YourContract",
-    eventName: "GreetingChange",
-    // Specify the starting block number from which to read events, this is a bigint.
-    fromBlock: 0n,
-    blockData: true,
-  });
-```
-
-3. Update our frontend so that we can display the results in table format. We will use a map to loop through the index of the array.
-
-```
-          <div>
-            {events && events.length > 0 && (
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Greeting Setter</th>
-                    <th>New Greeting</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {events.map((event, index) => (
-                    <tr key={index}>
-                      <td><Address address={event.args.greetingSetter} /></td>
-                      <td>{event.args.newGreeting}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
-```
+## Checkpoint 3:
 
 ---
 
@@ -249,8 +155,7 @@ For production-grade applications, it's recommended to obtain your own API keys 
 
 ## Additional Resources / Source Credit
 
-- [Solidity-by-example - Events](https://solidity-by-example.org/events/)
-- [Structure of a Contract](https://docs.soliditylang.org/en/develop/structure-of-a-contract.html)
+- [The Graph - Quick Start](https://thegraph.com/docs/en/quick-start/)
 
 
 ## Documentation

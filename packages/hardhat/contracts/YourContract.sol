@@ -13,10 +13,15 @@ contract YourContract {
 	string public greeting = "Hello Builders!";
 	uint256 public totalCounter;
 
+	event GreetingChange(
+		address indexed greetingSetter,
+		string newGreeting
+	);
+
 	function setGreeting(string memory _newGreeting) public {
-		// Change state variables
 		greeting = _newGreeting;
 		totalCounter += 1;
+		emit GreetingChange(msg.sender, _newGreeting);
 	}
 
 }

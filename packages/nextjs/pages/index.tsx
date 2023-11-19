@@ -3,7 +3,12 @@ import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { MetaHeader } from "~~/components/MetaHeader";
 import { Address, Balance } from "~~/components/scaffold-eth";
-import { useScaffoldContractRead, useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
+import {
+  useScaffoldContractRead,
+  useScaffoldContractWrite,
+  useScaffoldEventHistory,
+  useScaffoldEventSubscriber,
+} from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
   const { address } = useAccount();
@@ -26,6 +31,24 @@ const Home: NextPage = () => {
     args: [newGreeting],
   });
 
+  useScaffoldEventSubscriber({
+    contractName: "YourContract",
+    eventName: "GreetingChange",
+    listener: logs => {
+      logs.map(log => {
+        const { greetingSetter, newGreeting } = log.args;
+        console.log("📡 GreetingChange event", greetingSetter, newGreeting);
+      });
+    },
+  });
+
+  const { data: events } = useScaffoldEventHistory({
+    contractName: "YourContract",
+    eventName: "GreetingChange",
+    fromBlock: 0n,
+    blockData: true,
+  });
+
   return (
     <>
       <MetaHeader />
@@ -46,6 +69,28 @@ const Home: NextPage = () => {
             <button className="btn btn-primary" onClick={() => setGreeting()}>
               Set Greeting
             </button>
+          </div>
+          <div>
+            {events && events.length > 0 && (
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Greeting Setter</th>
+                    <th>New Greeting</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {events.map((event, index) => (
+                    <tr key={index}>
+                      <td>
+                        <Address address={event.args.greetingSetter} />
+                      </td>
+                      <td>{event.args.newGreeting}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       </div>

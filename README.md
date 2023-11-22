@@ -167,10 +167,14 @@ query MyQuery {
 
 ## Checkpoint 3: Update our table to reflect data from The Graph
 
+1. Import useQuery and gql so that we can use the Apollo client to render some data via GraphQL.
+
 ```
 import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 ```
+
+2. Create a query that we will use to access the first 10 greetings and their sender.
 
 ```
 const MY_QUERY = gql`
@@ -185,6 +189,8 @@ const MY_QUERY = gql`
 `;
 ```
 
+3. Get the data into an object and also do error checking in the case there is nothing to display. We will store the data in the variable `greetings`.
+
 ```
   const { loading, error, data } = useQuery(MY_QUERY);
 
@@ -195,6 +201,8 @@ const MY_QUERY = gql`
   // Access the data from the GraphQL query
   const greetings = data.greetings;
 ```
+
+4. We can now replace our existing div with the data coming from The Graph.
 
 ```
           <div>

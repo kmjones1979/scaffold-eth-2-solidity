@@ -269,6 +269,18 @@ yarn vercel
 
 > If you want to redeploy to the same production URL you can run `yarn vercel --prod`. If you omit the `--prod` flag it will deploy it to a preview/test URL.
 
+---
+
+## Next Challenge!
+
+Keep it going!! Next challenge you will learn about...
+- Events
+- useScaffoldEventHistory hook
+- useScaffoldEventSubscriber hook
+
+[🚩 Challenge #2: Events](https://github.com/kmjones1979/scaffold-eth-2-solidity/tree/solidity-2-events)
+
+---
 
 #### Configuration of Third-Party Services for Production-Grade Apps.
 

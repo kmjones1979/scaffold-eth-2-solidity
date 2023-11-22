@@ -312,6 +312,19 @@ For production-grade applications, it's recommended to obtain your own API keys 
 
 > 💬 Hint: It's recommended to store env's for nextjs in Vercel/system env config for live apps and use .env.local for local testing.
 
+---
+
+## Next Challenge!
+
+Keep it going!! Next challenge you will learn about...
+- wagmi useAccount hook
+- Scaffold-ETH hooks and components
+- Unsigned integers
+- Functions
+
+[🚩 Challenge #1: First App](https://github.com/kmjones1979/scaffold-eth-2-solidity/tree/solidity-1-first-app)
+
+---
 
 ## Additional Resources / Source Credit
 

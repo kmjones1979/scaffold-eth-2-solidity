@@ -38,7 +38,7 @@ solidity-3-the-graph
 ```
 
 ```
-cd solidity-2-events
+cd solidity-3-the-graph
 ```
 
 ```

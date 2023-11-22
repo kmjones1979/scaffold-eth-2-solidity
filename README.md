@@ -140,7 +140,7 @@ yarn deploy
 
 ---
 
-## Checkpoint 3: Fixing our test
+## Checkpoint 3: Fixing our test failure
 
 Check the hardhat test located in `packages/hardhat/test`. You will notice that the test is checking that the response from yourContract.greeting() is equal to a string value of "Hello Builders!"
 

@@ -34,9 +34,36 @@ This is a collection of Scaffold-ETH challenges aimed at teaching the basics of 
 To get started we recommend starting with Challenge #0 however here are all the current challenges.
 
 - [🚩 Challenge #0: Hello World](https://github.com/kmjones1979/scaffold-eth-2-solidity/tree/solidity-0-hello-world)
+
+```
+git clone -b solidity-0-hello-world \
+  https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
+  solidity-0-hello-world
+```
+
 - [🚩 Challenge #1: First App](https://github.com/kmjones1979/scaffold-eth-2-solidity/tree/solidity-1-first-app)
+
+```
+git clone -b solidity-1-first-app \
+  https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
+  solidity-1-first-app
+```
+
 - [🚩 Challenge #2: Events](https://github.com/kmjones1979/scaffold-eth-2-solidity/tree/solidity-2-events)
+
+```
+git clone -b solidity-2-events \
+  https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
+  solidity-2-events
+```
+
 - [🚩 Challenge #3: The Graph](https://github.com/kmjones1979/scaffold-eth-2-solidity/tree/solidity-3-the-graph)
+
+```
+git clone -b solidity-3-the-graph \
+  https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
+  solidity-2-the-graph
+```
 
 ## Documentation
 

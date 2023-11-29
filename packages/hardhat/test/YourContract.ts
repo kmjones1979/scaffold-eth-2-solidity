@@ -14,7 +14,7 @@ describe("YourContract", function () {
 
   describe("Deployment", function () {
     it("Should have the right message on deploy", async function () {
-      expect(await yourContract.greet()).to.equal("Hello Builders!");
+      expect(await yourContract.greeting()).to.equal("Hello Builders!");
     });
   });
 });

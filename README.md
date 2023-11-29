@@ -62,7 +62,7 @@ git clone -b solidity-2-events \
 ```
 git clone -b solidity-3-the-graph \
   https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
-  solidity-2-the-graph
+  solidity-3-the-graph
 ```
 
 ## Documentation

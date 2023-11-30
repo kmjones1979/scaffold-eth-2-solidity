@@ -1,4 +1,4 @@
-# 🏗 Scaffold-ETH 2 Solidity Challenges
+# 👷 Scaffold-ETH 2 Solidity Challenges 👷🏽‍♀️
 
 This is a collection of Scaffold-ETH challenges aimed at teaching the basics of the following concepts:
 
@@ -9,6 +9,8 @@ This is a collection of Scaffold-ETH challenges aimed at teaching the basics of 
 - Protocol Integrations (subgraph-package, etc)
 
 > NOTE: These challenges are a work in progress, if you find bugs please submit a pull request. I suggest watching this repo to stay up to date on changes and additions.
+
+---
 
 ## 🏗 About Scaffold-ETH 2
 

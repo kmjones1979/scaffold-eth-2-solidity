@@ -1,4 +1,16 @@
-# 🏗 Scaffold-ETH 2
+# 🏗 Scaffold-ETH 2 Solidity Challenges
+
+This is a collection of Scaffold-ETH challenges aimed at teaching the basics of the following concepts:
+
+- Solidity
+- Hardhat (deploy and test)
+- NextJS
+- Scaffold-ETH (yarn, hooks, components, etc)
+- Protocol Integrations (subgraph-package, etc)
+
+> NOTE: These challenges are a work in progress, if you find bugs please submit a pull request. I suggest watching this repo to stay up to date on changes and additions.
+
+## 🏗 About Scaffold-ETH 2
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
@@ -21,15 +33,7 @@ Before you begin, you need to install the following tools:
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
 
-## Quickstart
-
-This is a collection of Scaffold-ETH challenges aimed at teaching the basics of the following concepts:
-
-- Solidity
-- Hardhat (deploy and test)
-- NextJS
-- Scaffold-ETH (yarn, hooks, components, etc)
-- Protocol Integrations (subgraph-package, etc)
+## Quick Start
 
 To get started we recommend starting with Challenge #0 however here are all the current challenges.
 
@@ -64,6 +68,8 @@ git clone -b solidity-3-the-graph \
   https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
   solidity-3-the-graph
 ```
+
+- More coming soon!
 
 ## Documentation
 

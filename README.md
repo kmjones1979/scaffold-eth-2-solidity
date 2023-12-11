@@ -82,9 +82,11 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 1. Import the `useScaffoldEventSubscriber` hook from Scaffold-ETH so that we can subscribe to events.
 
+> Note: remove the + sign when copying this into your code as its just to show you the diff
+
 ```diff
 import { 
-+  useScaffoldEventSubscriber,
++ useScaffoldEventSubscriber,
   useScaffoldContractRead,
   useScaffoldContractWrite
 } from "~~/hooks/scaffold-eth";
@@ -111,10 +113,12 @@ import {
 
 1. Import `useScaffoldEventHistory` from Scaffold-ETH hooks.
 
+> Note: remove the + sign as mentioned before 
+
 ```diff
 import { 
   useScaffoldEventSubscriber,
-+  useScaffoldEventHistory, 
++ useScaffoldEventHistory, 
   useScaffoldContractRead, 
   useScaffoldContractWrite
 } from "~~/hooks/scaffold-eth";

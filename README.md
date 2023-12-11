@@ -2,22 +2,11 @@
 
 This toolkit is designed to teach you the concepts of solidity using Scaffold-ETH 2. Curriculum is based on the amazing content from Smart Contract Programer.
 
-# 🚩 Challenge #3: The Graph
+# 🚩 Challenge #4: Extending a subgraph
 
 In this challenge you will learn about the following concepts:
-- The Graph (manifest, schema, entities and handlers)
-- GraphiQL
-- Apollo Client
-
-## 🧑🏼‍🚀 The Graph
-
-[The Graph](https://thegraph.com/) is a protocol for building decentralized applications (dApps) quickly on Ethereum and IPFS using GraphQL.
-
-- 🗃️ **Decentralized Indexing**: The Graph enables open APIs ("subgraphs") to efficiently index and organize blockchain data.
-- 🔎 **Efficient Querying**: The protocol uses GraphQL for streamlined querying blockchain data.
-- 🙌 **Community Ecosystem**: The Graph fosters collaboration by empowering developers to build, deploy, and share subgraphs!
-
-For detailed instructions and more context, check out the [Getting Started Guide](https://thegraph.com/docs/en/cookbook/quick-start).
+- Adding a subgraph for a new event
+- Creating additional logic in your mapping
 
 ## Checkpoint 0: 📦 Environment 📚
 
@@ -32,13 +21,13 @@ To get started with Scaffold-ETH 2, follow the steps below:
 1. Clone this repo, checkout the active branch & install dependencies
 
 ```
-git clone -b solidity-3-the-graph \
+git clone -b solidity-4-extending-subgraph \
 https://github.com/kmjones1979/scaffold-eth-2-solidity.git \
-solidity-3-the-graph
+solidity-4-extending-subgraph
 ```
 
 ```
-cd solidity-3-the-graph
+cd solidity-4-extending-subgraph
 ```
 
 ```
@@ -89,145 +78,15 @@ This will spin up all the containers for The Graph using docker-compose. You wil
 
 ---
 
-## Checkpoint 2: Deploy the Subgraph
-
-A subgraph configuration consists of the following files:
-
-- subgraph.yaml - referred to as the manifest, this file holds details about the contract (such as network, address and ABI), as well as the subgraph entities and handlers (located inside the `schema.graphql` and `mapping.ts` )
-- schema.graphql - contains the data types for each entity and other configuration specifics like enums and interfaces 
-- Mappings (e.g. `mappings.ts) - AssemblyScript code that translates from the event data to the entities defined in your schema
-
-
-
-1. Create the local subgraph
-
-In this forth window we will create our local subgraph! 
-
-> Note: You will only need to do this once.
-
-```
-yarn local-create
-```
-
-> You should see some output stating your Subgraph has been created along with a log output on your graph-node inside docker.
-
-2. Ship your subgraph
-
-Next we will ship our subgraph! You will need to give your subgraph a version after executing this command. (e.g. 0.0.1).
-
-```
-yarn local-ship
-```
-
-> This command does the following all in one… 🚀🚀🚀
-
-- Copies the contracts ABI from the hardhat/deployments folder
-- Generates the networks.json file
-- Generates AssemblyScript types from the subgraph schema and the contract ABIs.
-- Compiles and checks the mapping functions.
-- … and deploy a local subgraph!
-
-> If you get an error ts-node you can install it with the following command
-
-```
-npm install -g ts-node
-```
-
-You should get a build completed output along with the address of your Subgraph endpoint.
-
-```
-Build completed: QmYdGWsVSUYTd1dJnqn84kJkDggc2GD9RZWK5xLVEMB9iP
-
-Deployed to http://localhost:8000/subgraphs/name/scaffold-eth/your-contract/graphql
-
-Subgraph endpoints:
-Queries (HTTP):     http://localhost:8000/subgraphs/name/scaffold-eth/your-contract
-```
-
-3. Test your subgraph
-
-Go ahead and head over to your [subgraph endpoint](http://localhost:8000/subgraphs/name/scaffold-eth/your-contract/graphql) and take a look!
-
-> Here is an example query 
-
-```
-query MyQuery {
-  greetings {
-    greeting
-    sender {
-      address
-    }
-  }
-}
-```
-
-> If all is well and you’ve sent a transaction to your smart contract then you will see a similar data output!
+## Checkpoint 2: Adding a new event
 
 ---
 
-## Checkpoint 3: Update our table to reflect data from The Graph
+## Checkpoint 3: Adding an event to an existing subgraph
 
-1. Import useQuery and gql so that we can use the Apollo client to render some data via GraphQL.
+---
 
-```
-import { useQuery } from "@apollo/client";
-import gql from "graphql-tag";
-```
-
-2. Create a query that we will use to access the first 10 greetings and their sender.
-
-```
-const MY_QUERY = gql`
-  query MyQuery {
-    greetings(first: 10) {
-      greeting
-      sender {
-        address
-      }
-    }
-  }
-`;
-```
-
-3. Get the data into an object and also do error checking in the case there is nothing to display. We will store the data in the variable `greetings`.
-
-```
-  const { loading, error, data } = useQuery(MY_QUERY);
-
-  // Check for loading and error states
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  
-  // Access the data from the GraphQL query
-  const greetings = data.greetings;
-```
-
-4. We can now replace our existing div with the data coming from The Graph.
-
-```
-          <div>
-            {greetings && greetings.length > 0 && (
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th>Greeting Setters</th>
-                    <th>New Greeting</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {greetings.map((greeting, index) => (
-                    <tr key={index}>
-                      <td>
-                        <Address address={greeting.sender.address} />
-                      </td>
-                      <td>{greeting.greeting}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
-```
+## Checkpoint 4: Adding a counter to a mapping
 
 ---
 

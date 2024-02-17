@@ -21,7 +21,7 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   // This variable is required for initial client side rendering of correct theme for RainbowKit
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const { isDarkMode } = useDarkMode();
-
+  // lol
   useEffect(() => {
     if (price > 0) {
       setNativeCurrencyPrice(price);
